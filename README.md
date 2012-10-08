@@ -83,4 +83,5 @@ Library will use [Github API v3](http://developer.github.com/v3/). As for HTTP o
 
 * [WebClient](http://msdn.microsoft.com/en-us/library/system.net.webclient.aspx) -  very simple, well known class, supporting sync/async but in old fashion.
 * [EasyHttp](https://github.com/hhariri/EasyHttp) - nice API, works great with JSON payload, but looks like only sync operations.
-* [HttpClient](http://msdn.microsoft.com/en-us/library/system.net.http.httpclient.aspx) - modern and promising, with support of Task<T>, but never used used. Is it only .NET 4.5?
+* [HttpClient](http://msdn.microsoft.com/en-us/library/system.net.http.httpclient.aspx) - modern and promising, with support of Task<T>, but I never used that.
+* [RestSharp](https://github.com/restsharp/RestSharp) - seems very powerful with async support, used by Github for Windows application. 
