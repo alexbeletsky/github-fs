@@ -12,7 +12,7 @@ Filesystem works both in 'sync' and 'async' ways. API's are identical, differs o
 
 ##Code samples and API
 
-###Initialization
+Initialization:
 
     var credentials = new Credentials
                           {
@@ -22,21 +22,21 @@ Filesystem works both in 'sync' and 'async' ways. API's are identical, differs o
     var fileSystem = new Github.FileSystem.Open("https://github.com/alexanderbeletsky/github-fs.net",
                                                 credentials);
 
-###Check if file exist
+Check if file exist:
 
     if (fileSystem.FileExists("README.md"))
     {
         // use file
     }
 
-###Check if directory exist
+Check if directory exist:
 
     if (fileSystem.DirectoryExists("src"))
     {
         // use directory
     }
 
-###File stat
+File stat:
 
     var stats = fileSystem.Stat("README.md");
     System.Console.WriteLine("Created at: " + stats.CreatedAt);
@@ -44,8 +44,7 @@ Filesystem works both in 'sync' and 'async' ways. API's are identical, differs o
     System.Console.WriteLine("Author: " + stats.Author);
     System.Console.WriteLine("Last change by: " + stats.LastChangeBy);
 
-
-###Getting the list of file system objects
+Getting the list of file system objects:
 
     var fileSystemObjects = fileSystem.GetSystemObjects();
     foreach (var o in fileSystemObjects)
@@ -60,32 +59,28 @@ Filesystem works both in 'sync' and 'async' ways. API's are identical, differs o
         }
     }
 
-
-###Reading the files
+Reading the files:
 
     var file = fileSystem.OpenFile("README.md");
     var content = file.Read().AsString();
 
-###Writing the files
+Writing the files:
 
     var hello = "Hello, world";
     file.Write(hello.AsBytes());
 
-
-###Rename a file
+Rename a file:
 
     file.Rename("README_2.md");
 
-###Delete a file
+Delete a file:
 
     file.Delete();
 
 ##Details of work
 
-Library will rely on [Github API v3](http://developer.github.com/v3/). As for HTTP operations, there are several options:
+Library will use [Github API v3](http://developer.github.com/v3/). As for HTTP operations, there are several options:
 
-* [WebClient](http://msdn.microsoft.com/en-us/library/system.net.webclient(v=vs.80).aspx) -  very simple, well known class, supporting sync/async but in old fashion.
-
+* [WebClient](http://msdn.microsoft.com/en-us/library/system.net.webclient.aspx) -  very simple, well known class, supporting sync/async but in old fashion.
 * [EasyHttp](https://github.com/hhariri/EasyHttp) - nice API, works great with JSON payload, but looks like only sync operations.
-
-* [HttpClient](http://msdn.microsoft.com/en-us/library/system.net.http.httpclient.aspx) - modern and promising, with support of Task<T>, but never used used. Is it only .NET 4.5 ?
+* [HttpClient](http://msdn.microsoft.com/en-us/library/system.net.http.httpclient.aspx) - modern and promising, with support of Task<T>, but never used used. Is it only .NET 4.5?
