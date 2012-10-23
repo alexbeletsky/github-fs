@@ -57,5 +57,14 @@ namespace Github.Tests.Integration
             Assert.That(fileSystem.DirectoryExists("README.md"), Is.False);
         }
 
+        [Test]
+        public void should_return_stat_for_file()
+        {
+            var fileSystem = FileSystem.Open("alexanderbeletsky", "candidate");
+            var stat = fileSystem.Stat("README.md");
+
+            Assert.That(stat.CreateAt, Is.Not.Null);
+        }
+
     }
 }

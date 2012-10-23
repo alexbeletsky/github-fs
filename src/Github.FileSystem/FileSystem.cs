@@ -70,35 +70,10 @@ namespace Github
 
             return false;
         }
-    }
 
-    public class Contents
-    {
-        public string Type { get; set; }
-
-        public string Encoding { get; set; }
-
-        public int Size { get; set; }
-    }
-
-    public class Credentials
-    {
-        public string Username
+        public Stat Stat(string filename)
         {
-            get;
-            set;
+            throw new NotImplementedException();
         }
-
-        public string Password
-        {
-            get;
-            set;
-        }
-    }
-
-    public interface IFileSystem
-    {
-        bool FileExists(string filename);
-        bool DirectoryExists(string directory);
     }
 }
