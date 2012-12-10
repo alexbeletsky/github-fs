@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -69,6 +70,27 @@ namespace Github
             }
 
             return false;
+        }
+
+        public Contents OpenPath(string path)
+        {
+            var url = string.Format("{0}/repos/{1}/{2}/contents/{3}", ApiBaseUrl, _owner, _repository, path);
+            var httpClient = new HttpClient();
+            var result = httpClient.GetAsync(url).Result;
+            if (result.StatusCode == HttpStatusCode.OK)
+            {
+                try
+                {
+                    var response = JsonConvert.DeserializeObject<Contents>(result.Content.ReadAsStringAsync().Result);
+                    return response;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+
+            return null;
         }
 
         public Stat Stat(string filename)
