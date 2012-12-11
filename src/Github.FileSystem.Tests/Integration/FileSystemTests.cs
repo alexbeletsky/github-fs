@@ -66,5 +66,13 @@ namespace Github.Tests.Integration
             Assert.That(stat.CreateAt, Is.Not.Null);
         }
 
+        [Test]
+        public void should_return_file_for_path()
+        {
+            var fileSystem = FileSystem.Open("alexanderbeletsky", "candidate");
+            var contents = fileSystem.OpenPath("README.md");
+
+            Assert.That(contents.FileContents, Is.Not.Null);
+        }
     }
 }
